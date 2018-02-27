@@ -72,7 +72,7 @@ void proxySocket::acceptConnect() {
     std::cerr << "fail to call accept function!" << std::endl;
     exit(EXIT_FAILURE);
   }
-  std::cout << "new_socket:" << new_socket << std::endl << "accept!" << std::endl;
+  std::cout << "begin connect!" << std::endl;
 }
 
 void * multiThreadControl(void * arg_list){
