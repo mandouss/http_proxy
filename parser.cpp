@@ -31,10 +31,10 @@ bool requestHead::parseRequest(char* buff){
     newline++;
   }
   protocol = std::string(start, newline - start);
+  head = std::string(buff, newline - buff);
 
-
-  start = newline + 2;
-  newline = newline + 2;
+  start = newline + 8;
+  newline = newline + 8;
   while(*newline != '\r'){
     newline++;
   }
@@ -44,6 +44,7 @@ bool requestHead::parseRequest(char* buff){
   std::cout<< "path: " << path << std::endl;
   std::cout<< "protocol: " << protocol << std::endl;
   std::cout<< "host: " << host << std::endl;
+  std::cout<< "head: " << head << std::endl;
   return true;
 }
 
@@ -95,6 +96,7 @@ bool responseHead::parseResponse(char *buff){
   char* start = buff;
   char* end = strstr(start, "\r\n");
   char* line = end;
+  head = std::string(start, line - start);
   start = strchr(start, ' ') + 1;
   end = strchr(start, ' ');
   code = std::string(start, end - start);
@@ -114,6 +116,7 @@ bool responseHead::parseResponse(char *buff){
   std::cout<< "code: "<< code << std::endl;
   std::cout<< "status: " << status << std::endl;
   std::cout<< "date: " << date << std::endl;
+  std::cout<< "head: " << head << std::endl;
   return true;
 }
 

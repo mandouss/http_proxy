@@ -32,6 +32,7 @@ class requestHead {
   std::string path;
   std::string protocol;
   std::string host;
+  std::string head;
   std::string get_method(){
     return method;
   }
@@ -43,6 +44,9 @@ class requestHead {
   }
   std::string get_host() {
     return host;
+  }
+  std::string get_head() {
+    return head;
   }
  public:
   requestHead(){}
@@ -56,6 +60,7 @@ class responseHead{
   std::string status;
   std::string code;
   std::string date;
+  std::string head;
  public:
   responseHead(){}
   ~responseHead(){}
@@ -68,5 +73,9 @@ class responseHead{
   std::string get_date() {
     return date;
   }
+  std::string get_head() {
+    return head;
+  }
+  
   bool parseResponse(char* buff);
 };
