@@ -14,16 +14,16 @@
 
 class thread_control {
  public:
-  int sockfd_t; //thread's sockfd for browers
+  int new_socket_t; //thread's sockfd for browers
   struct addrinfo * host_info_list_t;
-  thread_control(int s, struct addrinfo * hilt): sockfd_t(s), host_info_list_t(hilt) {}
+  thread_control(int s, struct addrinfo * hilt): new_socket_t(s), host_info_list_t(hilt) {}
   ~thread_control(){}
 };
 
 
 class proxy_control{
  private:
-  int sockfd; //for browser
+  int new_socket; //for browser
   struct addrinfo *host_info_list; //proxy
   char buff[buff_size]; 
   int uid;
@@ -31,10 +31,10 @@ class proxy_control{
   //{ char * hostname;
   //} char * por
  public:
- proxy_control(int s, struct addrinfo * hil): sockfd(s), host_info_list(hil){} //initialize req_str}
+ proxy_control(int s, struct addrinfo * hil): new_socket(s), host_info_list(hil){} //initialize req_str}
   ~proxy_control() {}
-  int get_socket() const{
-    return sockfd;
+  int get_new_socket() const{
+    return new_socket;
   }
   //int send(std::string);
   //int recv(std::string); 
