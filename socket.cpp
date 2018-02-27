@@ -76,11 +76,11 @@ void proxySocket::acceptConnect() {
 }
 
 void * multiThreadControl(void * arg_list){
-  int new_socket_tmp = ((thread_control *)arg_list) -> sockfd_t;
+  int new_socket_tmp = ((thread_control *)arg_list) -> new_socket_t;
   struct addrinfo *host_info_list_tmp = ((thread_control *)arg_list) -> host_info_list_t;
   proxy_control sc(new_socket_tmp, host_info_list_tmp);
   //std::cout << sc.get_socket() << std::endl;
-  close(sc->new_socket);
+  close(sc.get_new_socket());
   pthread_exit(NULL);
 }
 
