@@ -24,23 +24,6 @@ int proxySocket::get_sockfd() {
 struct addrinfo * proxySocket::get_host_info_list(){
   return host_info_list;
 }
-/*
-struct sockaddr_in proxySocket::get_c_addr(){
-  return c_addr;
-  }
-struct hostent * proxySocket::get_host_info(){
-  struct hostent *host = NULL;
-  struct sockaddr_in;
-  char hostname[100];
-  if(gethostname(hostname, sizeof(hostname)) < 0) {
-    return NULL;
-  }
-  if((host = gethostbyname(hostname)) == NULL) {
-    return NULL;
-  }
-  std::cout << hostname << std::endl;
-  return host;
-}*/
 
 void proxySocket::get_host_info(char * port) {
   int status;
@@ -89,14 +72,15 @@ void proxySocket::acceptConnect() {
     std::cerr << "fail to call accept function!" << std::endl;
     exit(EXIT_FAILURE);
   }
-  std::cout << new_socket << "accept!" << std::endl;
+  std::cout << "new_socket:" << new_socket << std::endl << "accept!" << std::endl;
 }
 
 void * multiThreadControl(void * arg_list){
   int new_socket_tmp = ((thread_control *)arg_list) -> sockfd_t;
   struct addrinfo *host_info_list_tmp = ((thread_control *)arg_list) -> host_info_list_t;
   proxy_control sc(new_socket_tmp, host_info_list_tmp);
-  std::cout << sc.get_socket() << std::endl;
+  //std::cout << sc.get_socket() << std::endl;
+  close(sc->new_socket);
   pthread_exit(NULL);
 }
 
@@ -114,10 +98,10 @@ int main(int argc, char * argv[]) {
   proxySocket p_socket;
   p_socket.get_host_info(argv[1]);
   p_socket.setupServer(argv[1]);
-  /*if(daemon(0, 1) != 0) {
+  if(daemon(0, 1) != 0) {
     std::cerr << "Error: fail to create Daemon!" << std::endl;
     exit(EXIT_FAILURE);
-    }*/
+  }
   while(1){
     p_socket.acceptConnect();
     thread_control para_list(p_socket.get_new_socket(),p_socket.get_host_info_list());
