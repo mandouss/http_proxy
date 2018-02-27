@@ -27,18 +27,46 @@
 #endif /* parser_hpp */
 //using namespace std
 class requestHead {
-public:
+ private:
   std::string method;
   std::string path;
   std::string protocol;
   std::string host;
+  std::string get_method(){
+    return method;
+  }
+  std::string get_path() {
+    return path;
+  }
+  std::string get_protocol() {
+    return protocol;
+  }
+  std::string get_host() {
+    return host;
+  }
+ public:
+  requestHead(){}
+  ~requestHead(){}
+  bool parseRequest(char *buff);
 };
+
+//HTTP response
 class responseHead{
-public:
+ private:
   std::string status;
   std::string code;
   std::string date;
+ public:
+  responseHead(){}
+  ~responseHead(){}
+  std::string get_status(){
+    return status;
+  }
+  std::string get_code() {
+    return code;
+  }
+  std::string get_date() {
+    return date;
+  }
+  bool parseResponse(char* buff);
 };
-
-bool parseRequest(char* buff, requestHead& head);
-bool parseResponse(char* buff, responseHead& head);
