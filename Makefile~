@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-std=c++11 -pedantic -Wall -ggdb3 -Werror -pthread
+CFLAGS=-std=c++11 -pedantic -Wall -ggdb3 -Werror 
 SOURCES=socket.cpp 
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=socket test
