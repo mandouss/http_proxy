@@ -23,7 +23,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <iostream>
-
+#include <vector>
 #endif /* parser_hpp */
 //using namespace std
 class requestHead {
@@ -34,6 +34,7 @@ class requestHead {
   std::string host;
   std::string head;
   std::string port;
+ public:
   std::string get_method(){
     return method;
   }
@@ -51,7 +52,7 @@ class requestHead {
   }std::string get_port() {
     return port;
   }
- public:
+ 
   requestHead(){}
   ~requestHead(){}
   bool parseRequest(char *buff);
@@ -63,16 +64,17 @@ class responseHead{
   std::string status;
   std::string code;
   std::string date;
-<<<<<<< HEAD
+  //<<<<<<< HEAD
   std::string length;
   std::string cache;
   std::string expire;
   std::string age;
   std::string etag;
   std::string head;
-=======
+  std::vector<char> body;
+  //=======
   //  std::vector<char> body;
->>>>>>> dcde491c3d87f492bf8ec085e36ab371fe559990
+  //>>>>>>> dcde491c3d87f492bf8ec085e36ab371fe559990
  public:
   responseHead(){}
   ~responseHead(){}
@@ -103,6 +105,9 @@ class responseHead{
   std::string get_head() {
     return head;
   }
-  
+  std::vector<char> get_body() {
+    return body;
+  }
   bool parseResponse(char* buff);
+  //set_body();
 };

@@ -14,4 +14,6 @@
 #include <unordered_map>
 #include "parser.h"
 
+#define EXPIRE_TIME 10000.0
+
 std::unordered_map<std::string, responseHead> cache;
