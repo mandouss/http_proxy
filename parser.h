@@ -33,6 +33,7 @@ class requestHead {
   std::string protocol;
   std::string host;
   std::string head;
+  std::string port;
   std::string get_method(){
     return method;
   }
@@ -47,6 +48,8 @@ class requestHead {
   }
   std::string get_head() {
     return head;
+  }std::string get_port() {
+    return port;
   }
  public:
   requestHead(){}
@@ -60,6 +63,11 @@ class responseHead{
   std::string status;
   std::string code;
   std::string date;
+  std::string length;
+  std::string cache;
+  std::string expire;
+  std::string age;
+  std::string etag;
   std::string head;
  public:
   responseHead(){}
@@ -72,6 +80,21 @@ class responseHead{
   }
   std::string get_date() {
     return date;
+  }
+  std::string get_length() {
+    return length;
+  }
+  std::string get_cache() {
+    return cache;
+  }
+  std::string get_expire() {
+    return expire;
+  }
+  std::string get_age() {
+    return age;
+  }
+  std::string get_etag() {
+    return etag;
   }
   std::string get_head() {
     return head;

@@ -162,12 +162,19 @@ bool responseHead::parseResponse(char *buff){
   std::cout<< "status: " << status << std::endl;
   std::cout<< "date: " << date << std::endl;
   std::cout<< "head: " << head << std::endl;
+  std::cout<< ": " << head << std::endl;
   return true;
 }
 
 int main(){
   char msg1[]= "GET /test:12345/next HTTP/1.1\r\nHost: 192.241.213.46:6880\r\nUpgrade-Insecure-Requests: 1\r\n\r\n";
   char msg2[]= "HTTP/1.x 200 OK\r\nTransfer-Encoding: chunked\r\nDate: Sat, 28 Nov 2009 04:36:25 GMT\r\n\r\n";
+  char msg3[]= "GET HTTP/2.0 200 OK\r\nHost:www.google.com\r\nUser-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:58.0) Gecko/20100101 Firefox/58.0\r\nAccept:*/*\r\nAccept-Language:en-US,en;q=0.5\r\nAccept-Encoding:gzip, deflate, br\r\nReferer:https://www.google.com/\r\nCookie:1P_JAR=2018-2-27-4; NID=124=mn5V6VgrEpkXVsEJqhmMaRIbMLOxWtdGMfZnZrv1yCqeqe
+_KFWDKymmBPrLJxYEOj5aLYSwWqWq0un41-eeZ_w9RiEJnqo_8PV1U2kvxi20MNMxnuRukFov8fJafTF9i; OGP=-5061451:\r\nConnection: keep-alive\r\n\r\n\r\naccept-ranges:bytes\r\nvary:Accept-Encoding\r
+\ncontent-encoding:gzip\r\ncontent-type:text/javascript; charset=UTF-8\r\ncontent-length:60398\r\ndate: Fri, 23 Feb 2018 23:59:02 GMT\r\nExpires: Sat, 23 Feb 2019 23:59:02 GMT\r\nla
+st-modified:Fri, 23 Feb 2018 23:25:09 GMT\r\nx-content-type-options:nosniff\r\nserver:sffe\r\nx-xss-protection:1; mode=block\r\ncache-control: public, max-age=31536000\r\nage: 2742
+48\r\nalt-svc:hq=\":443\"; ma=2592000; quic=51303431; quic=51303339; quic=51303338; quic=51303337; quic=51303335,quic=\":443\"; ma=2592000; v=\"41,39,38,37,35\"\r\nX-Firefox-Spdy:h
+2\r\n\r\n";
   requestHead head1;
   head1.parseRequest(msg1);
   responseHead head2;
