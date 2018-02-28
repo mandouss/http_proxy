@@ -56,7 +56,7 @@ class responseHead{
   std::string status;
   std::string code;
   std::string date;
-  //  std::vector<char> body;
+  std::vector<char> body;
  public:
   responseHead(){}
   ~responseHead(){}

@@ -125,5 +125,4 @@ int main(){
   responseHead head2;
   head2.parseResponse(msg2);
   return EXIT_SUCCESS;
-
 }
